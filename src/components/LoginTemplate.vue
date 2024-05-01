@@ -26,28 +26,24 @@ const password = ref('')
 const router = useRouter();
 
 const submitForm = async () => {
-  // console.log(`Username: ${username.value}, Password: ${password.value}`)
-  // const res = await axios.post('http://localhost:8080/user/login', {
-  //   username: username.value,
-  //   password: password.value
-  // }).then(res => {
-  //   console.log(res.data);
-  //   // 设置 cookie
-  //   Cookies.set('user', res.data.user);
-  //   // 跳转到对应的 view
-  //   if(res.data.user.role === 1){
-  //     router.push('/EditionalOffice');
-  //   }else if(res.data.user.role === 3) {
-  //     router.push('/College');
-  //   }else if(res.data.user.role === 4) {
-  //     router.push('/Student');
-  //   }
-  //
-  //
-  // }).catch(err => {
-  //   console.error(err);
-  // });
-  router.push('/EditionalOffice');
+  console.log(`Username: ${username.value}, Password: ${password.value}`)
+  const res = await axios.post('/api/user/login', {
+    username: username.value,
+    password: password.value
+  }).then(res => {
+    console.log(res);
+    localStorage.setItem('authorization', res.data.data.token); // 设置 'authorization' 的值为空
+    // 跳转到对应的 view
+    if(res.data.data.role === 1){
+      router.push('/EditionalOffice');
+    }else if(res.data.data.role === 3) {
+      router.push('/College');
+    }else if(res.data.data.role === 4) {
+      router.push('/Student');
+    }
+  }).catch(err => {
+    console.error(err);
+  });
 }
 </script>
 

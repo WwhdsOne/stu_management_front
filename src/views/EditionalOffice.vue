@@ -2,7 +2,6 @@
   <div class="common-layout">
     <el-container>
       <el-header>
-        <div class="h-6"/>
         <el-menu
             :default-active="activeIndex2"
             class="el-menu-demo"
@@ -14,17 +13,17 @@
             :router="true"
         >
           <el-menu-item index="1">课程录入</el-menu-item>
-          <el-menu-item index="2">退学处理</el-menu-item>
+          <el-menu-item index="2">学生管理</el-menu-item>
           <el-menu-item index="3">退课处理</el-menu-item>
-          <el-menu-item index="4">休复学处理</el-menu-item>
+          <el-menu-item index="5">退出登录</el-menu-item>
         </el-menu>
       </el-header>
 
-        <el-main>
-          <div id="container">
-            <router-view/>
-          </div>
-        </el-main>
+      <el-main>
+        <div id="container">
+          <router-view/>
+        </div>
+      </el-main>
     </el-container>
   </div>
 </template>
@@ -38,9 +37,14 @@ const activeIndex2 = ref('1')
 const handleSelect = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
   if (key === '1') {
+    activeIndex2.value = key
     router.push({name: 'addCourse'})
-  } else {
-    router.push({name: 'addCourse'})
+  } else if(key === '2'){
+    activeIndex2.value = key
+    router.push({name: 'stuManagement'})
+  } else if (key === '5') {
+    localStorage.setItem('authorization', ''); // 设置 'authorization' 的值为空
+    router.push({name: 'login'});
   }
 }
 </script>

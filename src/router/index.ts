@@ -19,6 +19,11 @@ const router = createRouter({
                 name: 'addCourse',
                 component: () => import('@/components/EditionalOfficeMenuItem/addCourse.vue'),
             },
+            {
+                path: 'stuManagement',
+                name: 'stuManagement',
+                component: () => import('@/components/EditionalOfficeMenuItem/stuManagement.vue'),
+            },
         ]
     }
   ]
