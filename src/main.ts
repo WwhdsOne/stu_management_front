@@ -8,7 +8,10 @@ import App from './App.vue'
 import router from './router'
 import './assets/main.css'
 import axios from "axios";
+import { useDataDictionaryStore } from '@/stores/dataDictionaryStore'
+
 const app = createApp(App)
+const pinia = createPinia();
 
 axios.interceptors.request.use(
     // config：请求报文信息
@@ -25,8 +28,12 @@ axios.interceptors.request.use(
         return Promise.reject(error)
     }
 )
+app.use(pinia)
 app.use(ElementPlus)
-app.use(createPinia())
 app.use(router)
+const dataDictionaryStore = useDataDictionaryStore()
+dataDictionaryStore.fetchDataDictionary().then(() => {
+  app.mount('#app')
+})
 
-app.mount('#app')
+
