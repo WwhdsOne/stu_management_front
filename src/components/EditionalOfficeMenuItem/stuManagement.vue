@@ -10,7 +10,6 @@
       :formatter="row => {return dataDictionaryStore.dataDictionary['sex'][row.gender].value;}"
     ></el-table-column>
     <el-table-column prop="enrollmentDate" label="入学日期"></el-table-column>
-    <el-table-column prop="status" label="状态"></el-table-column>
     <el-table-column
       prop="status"
       label="状态"

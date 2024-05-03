@@ -125,17 +125,17 @@ const selectCourse = async (courseId) => {
 
 const dropCourse = async (courseId) => {
   console.log(`退课：${courseId}`);
-  // 在这里实现退课的逻辑
-  // 假设你已经实现了退课的 API
   try {
     const response = await axios.post('/api/stu/drop', { stuId: user.value.id, courseId: courseId }).
     then(res => {
-      if(res.data.error !== null){
+      if(res.data.success !== true){
         ElMessage.error(res.data.errorMsg);
         return ;
       }else{
         ElMessage.success('退课成功');
         fetchCourses(); // 刷新课程列表
+        fetchUserInfo(); // 刷新用户信息
+        fetchStuCourses(); // 刷新学生课程信息
       }
     })
   } catch (error) {

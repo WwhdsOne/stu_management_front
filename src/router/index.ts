@@ -37,6 +37,38 @@ const router = createRouter({
           component: () => import('@/components/StudentMenuItem/CourseManagement.vue')
         }
       ]
+    },
+    {
+      path: '/College',
+      name: 'College',
+      component: () => import('@/views/College.vue'),
+      children: [
+        {
+          path: 'addStudent',
+          name: 'addStudent',
+          component: () => import('@/components/CollegeMenuItem/addStudent.vue')
+        },
+        {
+          path: 'CourseSelectionQuery',
+          name: 'CourseSelectionQuery',
+          component: () => import('@/components/CollegeMenuItem/CourseSelectionQuery.vue')
+        },
+        {
+          path: 'CourseInfo',
+          name: 'CourseInfo',
+          component: () => import('@/components/CollegeMenuItem/CourseInfo.vue')
+        },
+        {
+          path: 'StudentInfo',
+          name: 'StudentInfo',
+          component: () => import('@/components/CollegeMenuItem/StudentInfo.vue')
+        },
+        {
+          path: 'scoreManagement',
+          name: 'scoreManagement',
+          component: () => import('@/components/CollegeMenuItem/scoreManagement.vue')
+        }
+      ]
     }
   ]
 })
