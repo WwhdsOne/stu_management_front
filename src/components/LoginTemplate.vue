@@ -1,13 +1,13 @@
 <template>
   <div class="login-container">
-    <h2>登录</h2>
+    <h2 style="text-align: center;">登录</h2>
     <form @submit.prevent="submitForm">
       <div class="input-group">
-        <label for="username">用户名</label>
+        <label for="username">用户名&emsp;</label>
         <input type="text" id="username" v-model="username" required/>
       </div>
       <div class="input-group">
-        <label for="password">密码</label>
+        <label for="password">密码&emsp;&emsp;</label>
         <input type="password" id="password" v-model="password" required/>
       </div>
       <button type="submit">登录</button>
@@ -18,7 +18,6 @@
 <script setup lang="ts">
 import {ref} from 'vue'
 import axios from "axios";
-import Cookies from 'js-cookie';
 import {useRouter} from 'vue-router';
 
 const username = ref('')
@@ -48,36 +47,33 @@ const submitForm = async () => {
 </script>
 
 <style scoped>
-.login-container {
-  width: 300px;
-  margin: 0 auto;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
 
 .input-group {
   margin-bottom: 20px;
+  text-align: center;
 }
 
 input {
-  width: 100%;
+  width: 75%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
 button {
-  width: 100%;
+  width: 15%;
   padding: 10px;
   background-color: #007BFF;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  display: block;
+  margin: auto;
 }
 
 .login-container {
-  width: 300px;
+  width: 500px;
   margin: 0 auto;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
