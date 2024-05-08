@@ -19,6 +19,7 @@
 import {ref} from 'vue'
 import axios from "axios";
 import {useRouter} from 'vue-router';
+import {ElMessage} from 'element-plus';
 
 const username = ref('')
 const password = ref('')
@@ -30,10 +31,13 @@ const submitForm = async () => {
     username: username.value,
     password: password.value
   }).then(res => {
-    console.log(res);
-    localStorage.setItem('authorization', res.data.data.token); // 设置 'authorization' 的值为空
+    if(res.data.success != true){
+      ElMessage.error(res.data.errorMsg)
+      return ;
+    }
+    localStorage.setItem('authorization', res.data.data.token);
     // 跳转到对应的 view
-    if(res.data.data.role === 1){
+    if(res.data.data.role === 2){
       router.push('/EditionalOffice');
     }else if(res.data.data.role === 3) {
       router.push('/College');
@@ -41,7 +45,7 @@ const submitForm = async () => {
       router.push('/Student');
     }
   }).catch(err => {
-    console.error(err);
+    ElMessage.error(err.data.errorMsg)
   });
 }
 </script>

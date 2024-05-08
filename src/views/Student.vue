@@ -13,33 +13,36 @@
           :router="true"
         >
           <el-menu-item index="1">个人课程管理</el-menu-item>
-          <el-menu-item index="2">退出登录</el-menu-item>
+          <el-menu-item index="2">修改密码</el-menu-item>
+          <el-menu-item index="3">退出登录</el-menu-item>
         </el-menu>
       </el-header>
 
       <el-main>
         <div id="container">
-          <router-view/>
+          <router-view />
         </div>
       </el-main>
     </el-container>
   </div>
 </template>
 <script setup lang="ts">
-import {ref} from 'vue'
-import {useRouter} from 'vue-router'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 const router = useRouter()
-const activeIndex = ref('1')
 const activeIndex2 = ref('1')
 const handleSelect = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
   if (key === '1') {
     activeIndex2.value = key
-    router.push({name: 'CourseManagement'})
+    router.push({ name: 'CourseManagement' })
   } else if (key === '2') {
-    localStorage.setItem('authorization', ''); // 设置 'authorization' 的值为空
-    router.push({name: 'login'});
+    activeIndex2.value = key
+    router.push({ name: 'PasswordUpdateStu' })
+  } else if (key === '3') {
+    localStorage.setItem('authorization', '') // 设置 'authorization' 的值为空
+    router.push({ name: 'login' })
   }
 }
 </script>

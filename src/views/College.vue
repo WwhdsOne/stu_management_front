@@ -17,7 +17,8 @@
           <el-menu-item index="3">课程信息</el-menu-item>
           <el-menu-item index="4">学生信息</el-menu-item>
           <el-menu-item index="5">成绩录入</el-menu-item>
-          <el-menu-item index="6">退出登录</el-menu-item>
+          <el-menu-item index="6">修改密码</el-menu-item>
+          <el-menu-item index="7">退出登录</el-menu-item>
         </el-menu>
       </el-header>
 
@@ -52,7 +53,10 @@ const handleSelect = (key: string, keyPath: string[]) => {
   } else if (key === '5') {
     activeIndex2.value = key
     router.push({name: 'scoreManagement'});
-  }else if (key === '6') {
+  } else if (key === '6') {
+    activeIndex2.value = key
+    router.push({name: 'PasswordUpdateCollege'});
+  }else if (key === '7') {
     localStorage.setItem('authorization', ''); // 设置 'authorization' 的值为空
     router.push({name: 'login'});
   }

@@ -23,6 +23,11 @@ const router = createRouter({
           path: 'stuManagement',
           name: 'stuManagement',
           component: () => import('@/components/EditionalOfficeMenuItem/stuManagement.vue')
+        },
+        {
+          path: 'PasswordUpdateOffice',
+          name: 'PasswordUpdateOffice',
+          component: () => import('@/components/EditionalOfficeMenuItem/PasswordUpdateOffice.vue')
         }
       ]
     },
@@ -35,6 +40,11 @@ const router = createRouter({
           path: 'CourseManagement',
           name: 'CourseManagement',
           component: () => import('@/components/StudentMenuItem/CourseManagement.vue')
+        },
+        {
+          path: 'PasswordUpdateStu',
+          name: 'PasswordUpdateStu',
+          component: () => import('@/components/StudentMenuItem/PasswordUpdateStu.vue')
         }
       ]
     },
@@ -67,6 +77,11 @@ const router = createRouter({
           path: 'scoreManagement',
           name: 'scoreManagement',
           component: () => import('@/components/CollegeMenuItem/scoreManagement.vue')
+        },
+        {
+          path: 'PasswordUpdateCollege',
+          name: 'PasswordUpdateCollege',
+          component: () => import('@/components/CollegeMenuItem/PasswordUpdateCollege.vue')
         }
       ]
     }
